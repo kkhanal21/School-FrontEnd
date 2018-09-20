@@ -1,0 +1,131 @@
+<div class="panel">
+  <div class="panel-heading border">
+    <ol class="breadcrumb mb0 no-padding">
+      <li>
+        <a href="javascript:;">Home</a>
+      </li>
+      <li>
+        <a href="javascript:;">Tables</a>
+      </li>
+      <li class="active">Data tables</li>
+    </ol>
+  </div>
+  <div class="panel-body">
+    <!-- <button class="btn btn-xs btn-success pull-right" (click)="showAddForm()">
+      <i class="fa fa-plus"></i>
+    </button> -->
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline no-footer">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="dataTables_length" id="DataTables_Table_0_length">
+            <label>Show
+              <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select> entries</label>
+          </div>
+          <div class="toolbar">
+            <a id="new" href="javascript:;" class="btn btn-success mb15 ml15" (click)="showAddForm()"> Add new class</a>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div id="DataTables_Table_0_filter" class="dataTables_filter">
+            <label>
+              <input class="form-control" placeholder="Search" aria-controls="DataTables_Table_0" type="search">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="load==false && noData == true">
+        <p style="text-align: center;">There are no data.</p>
+      </div>
+      <div *ngIf="load==false && noData == false" class="table-responsive">
+        <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered dataTable no-footer"
+          id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+          <thead>
+            <tr role="row">
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 245px;" aria-label="Position: activate to sort column ascending">Class name
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 127px;" aria-label="Office: activate to sort column ascending">Created date
+              </th>            
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 108px;" aria-label="Start Date: activate to sort column ascending">Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr role="row" class="odd" *ngFor="let c of classes | paginate: { itemsPerPage: limit, currentPage: pageNo,totalItems: totalItems }">                            
+              <td>{{c.className}}</td>
+              <td>{{c.createdDate | date:'medium'}}</td>            
+              <td>
+                <button class="btn btn-xs btn-danger" (click)="deleteClass(c)">
+                  <i class="fa fa-trash"></i>
+                </button>
+                <button class="btn btn-xs btn-primary" (click)="showEditForm(c)">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="datatable-bottom">
+        <div class="spinner" *ngIf="load">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+        <!-- <div class="pull-left">
+          <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div>
+        </div> -->
+        <div class="pull-right">
+          <div class="dataTables_paginate paging_bootstrap" id="DataTables_Table_0_paginate">
+            <pagination-controls class="pagination pagination-sm clearfix block" (pageChange)="pageChange($event)"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal bs-modal-sm" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">{{formTitle}}</h4>
+      </div>
+      <div class="modal-body scrollable" style="max-height: 400px;">
+        <!-- form starts here -->
+        <form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+
+          <div class="form-group">
+            <label>Class Name</label>
+            <input type="text" [ngClass]="{
+              'error': className.invalid && (className.dirty || className.touched),
+              'valid': className.valid && (className.dirty || className.touched)}" class="form-control error" name="className"
+              [(ngModel)]="model.className" required #className="ngModel">
+            <div *ngIf="className.errors && (className.dirty || className.touched)">
+              <label *ngIf="className.errors.required" class="error">This field is required.</label>
+            </div>
+          </div>
+          
+
+          <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit
+          </button>
+
+          <pre>{{f.value | json}}</pre>
+        </form>
+
+      </div>
+      <div class="modal-footer no-border">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

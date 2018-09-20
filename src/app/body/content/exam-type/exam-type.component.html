@@ -1,0 +1,135 @@
+<div class="panel">
+  <div class="panel-heading border">
+    <ol class="breadcrumb mb0 no-padding">
+      <li>
+        <a href="javascript:;">Home</a>
+      </li>
+      <li>
+        <a href="javascript:;">Tables</a>
+      </li>
+      <li class="active">Data tables</li>
+    </ol>
+  </div>
+  <div class="panel-body">
+    <button class="btn btn-xs btn-success pull-right" (click)="showAddForm()">
+      <i class="fa fa-plus"></i>
+    </button>
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline no-footer">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="dataTables_length" id="DataTables_Table_0_length">
+            <label>Show
+              <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select> entries</label>
+          </div>
+          <div class="toolbar">
+            <a id="new" href="javascript:;" class="btn btn-info mb15 ml15">Add new row</a>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div id="DataTables_Table_0_filter" class="dataTables_filter">
+            <label>
+              <input class="form-control" placeholder="Search" aria-controls="DataTables_Table_0" type="search">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered dataTable no-footer"
+          id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+          <thead>
+            <tr role="row">
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 245px;" aria-label="Position: activate to sort column ascending">Exam TItle
+              </th>              
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 108px;" aria-label="Start Date: activate to sort column ascending">Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr role="row" class="odd" *ngFor="let e of examTypes">
+              <td>{{e.examType}}</td>              
+              <td>
+                <button class="btn btn-xs btn-danger" (click)="deleteExamtypes(e)">
+                  <i class="fa fa-trash"></i>
+                </button>
+                <button class="btn btn-xs btn-primary" (click)="showEditForm(e)">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="datatable-bottom">
+        <div class="pull-left">
+          <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div>
+        </div>
+        <div class="pull-right">
+          <div class="dataTables_paginate paging_bootstrap" id="DataTables_Table_0_paginate">
+            <ul class="pagination no-margin">
+              <li class="prev disabled">
+                <a href="#" title="Previous">←</a>
+              </li>
+              <li class="active">
+                <a href="#">1</a>
+              </li>
+              <li class="next disabled">
+                <a href="#" title="Next">→</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal bs-modal-sm" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">{{formTitle}}</h4>
+      </div>
+      <div class="modal-body scrollable" style="max-height: 400px;">
+        <!-- form starts here -->
+        <form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+
+          <div class="form-group">
+            <label>Exam Name</label>
+            <input type="text" [ngClass]="{
+              'error': examType.invalid && (examType.dirty || examType.touched),
+              'valid': examType.valid && (examType.dirty || examType.touched)}" class="form-control error" name="examType"
+              [(ngModel)]="model.examType" required #examType="ngModel">
+            <div *ngIf="examType.errors && (examType.dirty || examType.touched)">
+              <label *ngIf="examType.errors.required" class="error">This field is required.</label>
+            </div>
+          </div>          
+
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control form-control-sm" name="status" [(ngModel)]="model.status">
+              <option value="true">Enabled</option>
+              <option value="false">Disabled</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit
+          </button>
+
+          <pre>{{f.value | json}}</pre>
+        </form>
+
+      </div>
+      <div class="modal-footer no-border">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

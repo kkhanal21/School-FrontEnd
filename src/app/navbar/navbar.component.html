@@ -1,0 +1,380 @@
+<div class="sidebar-panel offscreen-left">
+    <div class="brand">
+        <div class="brand-logo">
+            <img src="assets/images/logo.c5cdf202.png" height="15" alt=""> </div>
+        <a href="javascript:void(0);" class="toggle-sidebar hidden-xs hamburger-icon v3" data-toggle="layout-small-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+    <nav role="navigation">
+        <ul class="nav">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a routerLink="">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/student">
+                    <i class="fa fa-group"></i>
+                    <span>Student</span>
+                </a>
+                <!--<ul class="sub-menu">
+                     <li routerLinkActive="active">
+                        <a routerLink="/student">
+                                    <span>
+                                        <i class="fa fa-caret-right"></i>Student Details</span>
+                                </a>
+                    </li> 
+                        <a routerLink="/studentAdd">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Admit Student</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="studentBulkAdd">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Admit Bulk Student</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/student">
+                            <span> 
+                                <i class="fa fa-caret-right"></i>Student Information</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="studentPromotion">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Student Promotion</span>
+                        </a>
+                    </li>
+                </ul>-->
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/teacher">
+                    <i class="fa fa-user"></i>
+                    <span>Teacher</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/parent">
+                    <i class="fa fa-user-plus"></i>
+                    <span>Parent</span>
+                </a>
+            </li>
+            <!-- <li routerLinkActive="active">
+                <a routerLink="/librarian">
+                    <i class="fa fa-book"></i>
+                    <span>Librarian</span>
+                </a>
+            </li> -->
+            <li routerLinkActive="active">
+                <a routerLink="/accountant">
+                    <i class="fa fa-briefcase "></i>
+                    <span>Accountant</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a>
+                    <i class="fa fa-graduation-cap "></i>
+                    <span>Class</span>
+                </a>
+                <ul class="sub-menu">
+                    <li routerLinkActive="active">
+                        <a routerLink="manageClass">
+                            <span>
+                                <i class="fa fa-caret-right"></i> Manage Classes</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="manageSection">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Manage Sections</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="academicSyllabus">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Academic Syllabus</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li routerLinkActive="active">
+                <a>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Subject</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class one</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class Two</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class Three</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class Four</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li routerLinkActive="active">
+                <a>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Class Routine</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class one</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class Two</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class Three</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Class Four</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Daily Attendance</span>
+                </a>
+                <ul class="sub-menu">
+                    <li routerLinkActive="active">
+                        <a routerLink="dailyAttendance">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Daily Attendance</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="attendanceReport">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Attendance Report</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li routerLinkActive="active">
+                <a>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Exam</span>
+                </a>
+                <ul class="sub-menu">
+                    <li routerLinkActive="active">
+                        <a routerLink="examList">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Exam List</span>
+                        </a>
+                    </li>
+                    <!-- <li routerLinkActive="active">
+                        <a routerLink="examGrades">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Exam Grades</span>
+                        </a>
+                    </li> -->
+                    <li routerLinkActive="active">
+                        <a routerLink="manageMarks">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Manage Marks</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="examType">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Exam type</span>
+                        </a>
+                    </li>
+                    <!-- <li routerLinkActive="active">
+                        <a routerLink="sendmarksbysms">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Send Marks By Sms</span>
+                        </a>
+                    </li> -->
+                    <li routerLinkActive="active">
+                        <a routerLink="tabulationSheet">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Tabulation Sheet</span>
+                        </a>
+                    </li>
+                    <!-- <li routerLinkActive="active">
+                        <a routerLink="questionPaper">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Question Paper
+                            </span>
+                        </a>
+                    </li> -->
+                </ul>
+            </li>
+            <li routerLinkActive="active">
+                <a>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Study Material</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Accounting</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Add Student Payment
+                            </span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Student Payments
+                            </span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Expense
+                            </span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Expense Category
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li routerLinkActive="active">
+                <a >
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Library</span>
+                </a>
+            </li> -->
+            <!-- <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Transport</span>
+                </a>
+            </li> -->
+            <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Dormitory</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>NoticeBoard</span>
+                </a>
+            </li>
+            <!-- <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Message</span>
+                </a>
+            </li> -->
+            <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Setting</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>General Setting
+                            </span>
+                        </a>
+                    </li>
+                    <!-- <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Sms Setting
+                            </span>
+                        </a>
+                    </li> -->
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Language Setting
+                            </span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Payment Setting
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Frontend</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Pages
+                            </span>
+                        </a>
+                    </li>
+                    <!-- <li class="active">
+                        <a href="#">
+                            <span>
+                                <i class="fa fa-caret-right"></i>Themes
+                            </span>
+                        </a>
+                    </li> -->
+                </ul>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/subject">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Account</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

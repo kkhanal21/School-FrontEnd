@@ -1,0 +1,217 @@
+<div class="panel mb25">
+  <div class="panel-body">
+    <div class="row no-margin">
+      <div class="col-md-2">
+        <h3>Classes</h3>
+        <div class="demo-button" *ngFor="let c of classes;let i = index">
+          <button type="button" class="btn btn-primary btn-outline" [ngClass]="{            
+            'active': i==selectedIndex}" (click)="getExamListByClass(c,i)">Class {{c.className}}</button>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline no-footer">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="dataTables_length" id="DataTables_Table_0_length">
+                <label>Show
+                  <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </label>
+                <label>Exams
+                  <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control" [(ngModel)]="selectedExamType.examTypeId"
+                    (ngModelChange)="onChange($event)">
+                    <option *ngFor="let t of examTypes" value="{{t.examTypeId}}">{{t.examType}}</option>
+                  </select>
+                </label>
+              </div>
+              <div class="toolbar">
+                <a id="new" href="javascript:;" class="btn btn-success mb15 ml15" (click)="showAddForm()"> Add exam</a>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                <label>
+                  <input class="form-control" placeholder="Search" aria-controls="DataTables_Table_0" type="search">
+                </label>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="load==false && noData == true"><p style="text-align: center;">There are no data.</p></div>
+          <div *ngIf="load==false && noData == false" class="table-responsive">
+            <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered dataTable no-footer"
+              id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+              <thead>
+                <tr role="row">
+                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">Subject
+                  </th>
+                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 127px;" aria-label="Office: activate to sort column ascending">Exam Date
+                  </th>
+                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 56px;" aria-label="Age: activate to sort column ascending">Pass Mark
+                  </th>
+                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 108px;" aria-label="Start Date: activate to sort column ascending">Full Mark
+                  </th>
+                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 108px;" aria-label="Start Date: activate to sort column ascending">Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr role="row" class="odd" *ngFor="let e of exams">
+                  <td>{{e.subject}}</td>
+                  <td>{{e.examDate | date:'medium'}}</td>
+                  <td>{{e.passMark}}</td>
+                  <td>{{e.fullMark}}</td>
+                  <td>
+                    <button class="btn btn-xs btn-danger" (click)="deleteExam(e)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                    <button class="btn btn-xs btn-primary" (click)="showEditForm(e)">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="datatable-bottom">
+          <div class="spinner" *ngIf="load">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
+          <div class="pull-left">
+            <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div>
+          </div>
+          <div class="pull-right">
+            <div class="dataTables_paginate paging_bootstrap" id="DataTables_Table_0_paginate">
+              <ul class="pagination no-margin">
+                <li class="prev disabled">
+                  <a href="#" title="Previous">←</a>
+                </li>
+                <li class="active">
+                  <a href="#">1</a>
+                </li>
+                <li class="next disabled">
+                  <a href="#" title="Next">→</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<!-- <div id="addForm" class="modal"> -->
+<!-- <div class="modal-content"> -->
+<!-- <span id="Span" class="close">&times;</span> -->
+<!-- <form novalidate #form="ngForm" (ngSubmit)="onSubmit(form)"> -->
+<!-- <div class="form-group">
+            <label>Exam Name:</label>
+            <input type="text" class="form-control" [(ngModel)]="exam.examName" name="name" #examName="ngModel" required />
+          </div>
+          <div *ngIf="examName.errors?.required && examName.touched" class="alert alert-danger">Exam-name is required</div> -->
+<!-- <div class="form-group">
+              <label>Exam Date:</label>
+              <input type="date" class="form-control" [(ngModel)]="exam.date" name="date" #userEmail="ngModel" date required />
+            </div>
+            <div *ngIf="examDate.errors?.date && examDate.touched" class="alert alert-danger">Date is Invalid</div> -->
+
+<!-- <input type="submit" class="btn btn-primary" [disabled]="!form.valid" value="submit" />
+    
+          <button id="close-btn" class="btn btn-primary btn-xs">Close</button>
+        </form> -->
+<!-- </div> -->
+
+<!-- </div> -->
+
+<div class="modal bs-modal-sm" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true"
+  style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Contact</h4>
+      </div>
+      <div class="modal-body">
+        <!-- <form novalidate #form="ngForm" (ngSubmit)="onSubmit(form)">
+              <div class="form-group">
+                <label>Exam Name:</label>
+                <input type="text" class="form-control" [(ngModel)]="exam.name" name="name" #examName="ngModel" required />
+              </div>
+              <div *ngIf="examName.errors?.required && examName.touched" class="alert alert-danger">Exam-name is required</div> -->
+        <!-- <div class="form-group">
+                      <label>Exam Date:</label>
+                      <input type="date" class="form-control" [(ngModel)]="exam.date" name="date" #userEmail="ngModel" date required />
+                    </div>
+                    <div *ngIf="examDate.errors?.date && examDate.touched" class="alert alert-danger">Date is Invalid</div> -->
+
+        <!-- <input type="submit" class="btn btn-primary" [disabled]="!form.valid" value="submit" />
+    
+              <button id="close-btn" class="btn btn-primary btn-xs">Close</button>
+            </form> -->
+
+        <!-- <form novalidate #form="ngForm" (ngSubmit)="onSubmit(form)"> -->
+        <form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+
+          <div class="form-group">
+            <label>Subject</label>
+            <select name="subjectId" (ngModelChange)="onSubChange($event)" class="form-control form-control-sm" [(ngModel)]="model.subjectId">
+              <option value="-1">--Select Subject--</option>
+              <option *ngFor="let s of subjects" [ngValue]="s">{{s.subjectName}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Full marks</label>
+            <input type="number" [ngClass]="{
+                              'error': fullMark.invalid && (fullMark.dirty || fullMark.touched),
+                              'valid': fullMark.valid && (fullMark.dirty || fullMark.touched)}" class="form-control" name="fullMark"
+              [(ngModel)]="model.fullMark" required #fullMark="ngModel">
+            <div *ngIf="fullMark.errors && (fullMark.dirty || fullMark.touched)">
+              <label *ngIf="fullMark.errors.required" class="error">Full mark is required.</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Pass marks</label>
+            <input type="number" [ngClass]="{
+                                'error': passMark.invalid && (passMark.dirty || passMark.touched),
+                                'valid': passMark.valid && (passMark.dirty || passMark.touched)}" class="form-control" name="passMark"
+              [(ngModel)]="model.passMark" required #passMark="ngModel">
+            <div *ngIf="passMark.errors && (passMark.dirty || passMark.touched)">
+              <label *ngIf="passMark.errors.required" class="error">Pass mark is required.</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Exam Date</label>
+            <input type="date" [ngClass]="{
+                                  'error': examDate.invalid && (examDate.dirty || examDate.touched),
+                                  'valid': examDate.valid && (examDate.dirty || examDate.touched)}" class="form-control"
+              name="examDate" [(ngModel)]="model.examDate" required #examDate="ngModel">
+            <!-- data-provide=datepicker -->
+            <div *ngIf="examDate.errors && (examDate.dirty || examDate.touched)">
+              <label *ngIf="examDate.errors.required" class="error">Exam date is required.</label>
+            </div>
+          </div>
+
+          <pre>{{f.value | json}}</pre>
+
+          <div class="modal-footer no-border">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
